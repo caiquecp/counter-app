@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Scoreboard</string>
+    <string name="app_name">Counter</string>
     <string name="add_score_button">Add %d</string>
     <string name="remove_score_button">Remove %d</string>
-    <string name="reset_score_button">Reset score</string>
+    <string name="reset_score_button">Reset</string>
+    <string name="count_label">Current count</string>
 </resources>

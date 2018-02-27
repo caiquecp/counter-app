@@ -1,4 +1,4 @@
-package br.com.ccp.scoreboard;
+package br.com.ccp.counter;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

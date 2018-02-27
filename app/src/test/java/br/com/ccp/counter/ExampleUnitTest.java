@@ -1,4 +1,4 @@
-package br.com.ccp.scoreboard;
+package br.com.ccp.counter;
 
 import org.junit.Test;
 
