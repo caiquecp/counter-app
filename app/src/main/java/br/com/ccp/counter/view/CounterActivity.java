@@ -2,7 +2,12 @@ package br.com.ccp.counter.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.com.ccp.counter.R;
@@ -10,54 +15,60 @@ import br.com.ccp.counter.controller.CounterController;
 import br.com.ccp.counter.controller.CounterControllerImplementation;
 import br.com.ccp.counter.model.Counter;
 import br.com.ccp.counter.model.CounterConfig;
+import br.com.ccp.counter.model.CounterObserver;
 
-public class CounterActivity extends AppCompatActivity
-        implements CounterController.CounterActionListener {
+public class CounterActivity extends AppCompatActivity implements CounterObserver {
 
-    private CounterController controller;
+    private Counter counter;
+    private CounterController counterController;
 
     private TextView countTextView;
-    private Button addCountButton;
-    private Button removeCountButton;
-    private Button resetCountButton;
+    private ImageButton addCountButton;
+    private ImageView removeCountButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter);
 
-        controller = new CounterControllerImplementation(createDefaultCounter(), this);
+        counter = createDefaultCounter();
+        counterController = new CounterControllerImplementation(counter);
 
         countTextView = findViewById(R.id.count_text_view);
         addCountButton = findViewById(R.id.add_count_button);
         removeCountButton = findViewById(R.id.remove_count_button);
-        resetCountButton = findViewById(R.id.reset_count_button);
 
         addCountButton.setOnClickListener(view -> {
-            controller.addCount();
+            counterController.addCount();
         });
 
         removeCountButton.setOnClickListener(view -> {
-            controller.removeCount();
+            counterController.removeCount();
         });
 
-        resetCountButton.setOnClickListener(view -> {
-            controller.resetCount();
-        });
-
-        controller.startCount();
-    }
-
-    @Override
-    public void onCountStarted(Counter counter) {
-        addCountButton.setText(getString(R.string.add_score_button, counter.getConfig().getStep()));
-        removeCountButton.setText(getString(R.string.remove_score_button,
-                counter.getConfig().getStep()));
         bindCounter(counter);
     }
 
     @Override
-    public void onCountChanged(Counter counter) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.counter_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.reset_count_button:
+                counterController.resetCount();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void update(Counter counter) {
         bindCounter(counter);
     }
 
@@ -71,6 +82,7 @@ public class CounterActivity extends AppCompatActivity
         CounterConfig counterConfig = new CounterConfig(0, 1, 0,
                 100);
         Counter counter = new Counter(counterConfig);
+        counter.addObserver(this);
         return counter;
     }
 }
