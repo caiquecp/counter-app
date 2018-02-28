@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,20 +7,22 @@
     android:paddingBottom="@dimen/activity_horizontal_padding"
     android:paddingStart="@dimen/activity_vertical_padding"
     android:paddingEnd="@dimen/activity_vertical_padding"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context="br.com.ccp.counter.view.CounterActivity">
 
     <TextView
         android:id="@+id/count_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/count_text_size" />
+        android:textSize="@dimen/count_text_size"
+        android:textAlignment="center"
+        android:text="@string/hard_coded_count" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/count_text_view"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 
@@ -28,18 +30,18 @@
             android:id="@+id/remove_count_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_spacing"
             android:src="@drawable/ic_remove_count_green"
-            android:background="?android:selectableItemBackground" />
+            android:background="?android:selectableItemBackground"
+            android:contentDescription="@string/remove_count_button" />
 
         <ImageButton
             android:id="@+id/add_count_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_spacing"
             android:src="@drawable/ic_add_count_green"
-            android:background="?android:selectableItemBackground" />
+            android:background="?android:selectableItemBackground"
+            android:contentDescription="@string/add_count_button" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

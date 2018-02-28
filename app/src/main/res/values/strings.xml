@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Counter</string>
     <string name="reset_count_button">Reset count</string>
+    <string name="add_count_button">Add to count</string>
+    <string name="remove_count_button">Remove from count</string>
+    <string name="hard_coded_count">-</string>
 </resources>

@@ -1,7 +1,8 @@
 <resources>
     <dimen name="activity_horizontal_padding">8dp</dimen>
     <dimen name="activity_vertical_padding">16dp</dimen>
-    <dimen name="count_text_size">160sp</dimen>
-    <dimen name="count_operation_button_size">32dp</dimen>
     <dimen name="default_spacing">8dp</dimen>
+    <dimen name="count_text_size">160sp</dimen>
+    <dimen name="count_min_wdith">260dp</dimen>
+    <dimen name="count_operation_button_size">32dp</dimen>
 </resources>
