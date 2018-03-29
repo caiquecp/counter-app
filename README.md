@@ -2,7 +2,7 @@
 
 The goal of this project is to study and discuss MVC architectural pattern implementation in an Android app.
 
-The main reason is: developers say (no reference for now) it doesn't fit with the Android architecture and components so I really want to understand it. The best way I found is doing it.
+The main reason is: developers say (no reference for now) it doesn't fit with the Android architecture and components so I really want to understand it.
 
 ## Counter app's specifications
 + must keep a count
